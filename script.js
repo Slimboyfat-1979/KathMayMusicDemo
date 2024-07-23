@@ -15,7 +15,7 @@ const cover = document.getElementById('cover');
 const songs = ['upbeat', 'dancing', 'flamenco'];
 
 //Keep track of song
-let songIndex = 1;
+let songIndex = 0;
 
 //Initially load song details into dom
 loadSong(songs[songIndex]);
@@ -48,6 +48,29 @@ function pauseSong() {
     audio.pause();
 }
 
+function prevSong() {
+    songIndex--;
+    if(songIndex < 0) {
+        songIndex = songs.length - 1;
+    }
+    loadSong(songs[songIndex]);
+    playSong();
+}
+
+function nextSong() {
+    songIndex++;
+    if(songIndex > songs.length - 1) {
+        songIndex = 0;
+    }
+    loadSong(songs[songIndex])
+    playSong()
+}
+
+function updateProgress(e) {
+    const {duration, currentTime} = e.srcElement;
+    console.log(duration, currentTime);
+}
+
 //Event Listeners
 playBtn.addEventListener('click', () => {
     const isPlaying = musicContainer.classList.contains('play');
@@ -56,5 +79,13 @@ playBtn.addEventListener('click', () => {
     }else{
         playSong();
     }
-})
+});
+
+prevBtn.addEventListener('click', prevSong);
+nextBtn.addEventListener('click', nextSong);
+
+//Time Song Update
+
+audio.addEventListener('timeupdate', updateProgress);
+
 
