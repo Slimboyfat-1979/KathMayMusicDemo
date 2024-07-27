@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
+:root {
+    --color-one: rgba(96, 30, 79);
+    --color-two: rgba(255, 203, 160);
+    --main-font: "Josefin Sans", sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+nav {
+    display: flex;
+    background-color: #601E4F;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 100px;
+}
+
+nav img {
+    width: 175px;
+}
+
+nav ul {
+    display: flex;
+}
+
+nav ul li {
+    list-style: none;
+    padding: 0 20px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-family: 'Josefin Sans';
+    font-size: 1.5rem;
+    position: relative;
+}
+
+nav ul li a::after {
+    content: '';
+    height: 3px;
+    width: 0%;
+    background-color: var(--color-two);
+    transition: width 0.3s ease-in;
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+}
+
+nav ul li a:hover::after {
+    width: 100%;
+}
+
+.hero {
+    background-color: black;
+    height: calc(100vh - 142px);
+    display: flex;
+    padding: 50px 300px;
+    position: relative; 
+}
+
+.hero img {
+    width: 600px;
+    overflow-y: hidden;
+    transform: tra;
+
+}
+
+.info {
+    color: white;
+    font-family: var(--main-font);
+}
+
+.info h1 {
+    font-size: 3rem;
+}
+
+.info h2 {
+    color: var(--color-two);
+    font-size: 1.5rem;
+    padding: 10px 0;
+}
+
+.info p {
+    padding: 30px 0;
+    line-height: 1.5rem;
+}
+
+.player {
+    position: absolute;
+    top: 50%;
+    /* background-color: green; */
+    width: 15%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.player button {
+    border-radius: 50%;
+    height: 75px;
+    width: 75px;
+    border: 1px solid white;
+    background-color: transparent;
+}
+
+.player button i {
+    font-size: 30px;
+    color: var(--color-two);
+    cursor: pointer;
+}
