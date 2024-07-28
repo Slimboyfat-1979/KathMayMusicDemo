@@ -1,5 +1,24 @@
 'use strict'
 
+//Code for navMenu and prechecks
+// document.addEventListener('DOMContentLoaded', function(){
+//     if(window.innerWidth < 480) {
+//         const mobileNav = `  <nav class="mobile-nav">
+//         <ul>
+//             <li><a href="">Home</a></li>
+//             <li><a href="">About</a></li>
+//             <li><a href="">Music</a></li>
+//             <li><a href="">Contact</a></li>
+//         </ul>
+//     </nav>`;
+
+//     console.log(document.body)
+//     document.body.insertAdjacentHTML('afterbegin', mobileNav)
+//     }
+// })
+
+
+
 //Code for music player
 
 const audio = document.querySelector('.audio');
@@ -31,3 +50,6 @@ audio.addEventListener('timeupdate', function() {
     const progressPercent = (currentTime / duration) * 100;
     progressBar.style.width = `${progressPercent}%`;   
 })
+
+
+//

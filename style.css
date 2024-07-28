@@ -68,8 +68,6 @@ nav ul li a:hover::after {
 .hero img {
     width: 600px;
     overflow-y: hidden;
-    transform: tra;
-
 }
 
 .info {
@@ -136,7 +134,54 @@ nav ul li a:hover::after {
     transition: width 0.25s linear;
 }
 
+/* //Coming from javascript */
+.mobile-nav {
+    height: 100px;
+    width: 100%;
+    background-color: red;
+}
 
 /* ============================================================ Media Queries ========================================== */
 
+@media screen and (max-width: 480px) {
+    nav {
+        display: none;
+    }
 
+    .hero {
+        height: auto;
+        padding: 20px 20px 0 20px;
+        text-align: center;
+        flex-direction: column;
+    }
+
+    .hero img {
+        width: 300px;
+    
+    }
+
+    .info {
+        padding: 100px 0;
+    }
+
+    .player {
+        width: 50%;
+        left: 25%;
+        transform: translateY(50px);
+    }
+
+    .player button {
+        border-radius: 50%;
+        height: 55px;
+        width: 55px;
+        border: 3px solid white;
+        background-color: transparent;
+    }
+    
+    
+    .player button i {
+        font-size: 14px;
+        color: var(--color-two);
+        cursor: pointer;
+    }
+}
