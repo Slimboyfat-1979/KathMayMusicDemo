@@ -34,10 +34,9 @@
 
 //Menu Nav Click
 
-const navContainer = document.querySelector('.nav-container');
-const menuContainer = document.querySelector('.menu-container');
+const hamburger = document.querySelector('.hamburger');
+const mobileNav = document.querySelector('#mobile-nav');
 
-navContainer.addEventListener('click', function(){
-    menuContainer.style.animationPlayState = 'running';
+hamburger.addEventListener('click', function(){
+    mobileNav.style.animationPlayState = 'running';
 })
-

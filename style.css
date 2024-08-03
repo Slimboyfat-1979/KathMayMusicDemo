@@ -23,12 +23,15 @@ a {
 
 #hero #mobile-nav {
     display: none;
+    
 }
 
 #hero {
     height: 100vh;
     width: 100vw;
     background-color: black;
+    position: relative;
+    
 }
 
 #hero #desktop-nav {
@@ -84,11 +87,56 @@ a {
         display: none
     }
 
-    #hero #mobile-nav {
-        display: block;   
+    #hero {
+        overflow: hidden;
     }
 
-    #mobile-nav .nav-container {
+    #hero #mobile-nav {
+        position: relative;
+        display: block;   
+        background-color: var(--color-one);
+        height: 200px;
+        width: 200px;
+        border-bottom-right-radius: 50%;
+        transform: translate(-50%, -50%);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        animation-name: growMenu;
+        animation-duration: 1.5s;
+        animation-fill-mode: forwards;
+        animation-play-state: paused;
+    }
+
+    @keyframes growMenu {
+        0% {
+            height: 200px;
+            width: 200px;
+        }
+        100%{
+            height: 1000px;
+            width: 1000px;
+        }
+    }
+
+    #mobile-nav .hamburger {
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        transform: translate(120%, 150%);
+        /* transform: translate(350%, 450%); */
+    }
+
+    #mobile-nav .hamburger div {
+        width: 100%;
+        height: 2px;
+        background-color: white;
+    }
+
+    /* #mobile-nav .nav-container {
         position: absolute;
         left: 10px;
         top: 20px;
@@ -143,7 +191,7 @@ a {
             height: 1000px;
             width: 1000px;
         }
-    }
+    } */
 }
 
 /* figure out why there is overflow on mobile */
