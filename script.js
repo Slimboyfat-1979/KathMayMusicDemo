@@ -39,4 +39,28 @@ const mobileNav = document.querySelector('#mobile-nav');
 
 hamburger.addEventListener('click', function(){
     mobileNav.style.animationPlayState = 'running';
+
+    mobileNav.addEventListener('animationend', () => {
+        setTimeout(() => {
+            mobileNav.insertAdjacentHTML('beforeend',
+                `<div class="nav-container">
+                    <ul>
+                        <li><a href="">Home</a></li>
+                        <li><a href="">About</a></li>
+                        <li><a href="">Music</a></li>
+                        <li><a href="">Contact</a></li>
+                    </ul>
+                </div>`
+            );
+        }, 100);
+
+        setTimeout(() => {
+            document.querySelector('.nav-container').classList.add('show');
+            console.log('Show menu now!')
+        }, 150)
+    });
+
+
 })
+
+

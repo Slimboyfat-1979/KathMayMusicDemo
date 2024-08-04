@@ -30,7 +30,7 @@ a {
     height: 100vh;
     width: 100vw;
     background-color: black;
-    position: relative;
+    /* position: relative; */
     
 }
 
@@ -93,7 +93,6 @@ a {
 
     #hero #mobile-nav {
         position: relative;
-        display: block;   
         background-color: var(--color-one);
         height: 200px;
         width: 200px;
@@ -119,14 +118,14 @@ a {
         }
     }
 
-    #mobile-nav .hamburger {
+     #mobile-nav .hamburger {
         position: absolute;
         width: 30px;
-        height: 30px;
+        height: 20px;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        transform: translate(120%, 150%);
+        transform: translate(120%, 230%);
         /* transform: translate(350%, 450%); */
     }
 
@@ -136,62 +135,28 @@ a {
         background-color: white;
     }
 
-    /* #mobile-nav .nav-container {
+    #mobile-nav .nav-container {
         position: absolute;
-        left: 10px;
-        top: 20px;
-        width: 10%;
-        height: 30px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        z-index: 1;
-        cursor: pointer;
+        top: 668px;
+        left: 592px;
+        font-size: 2rem;
+        font-family: var(--main-font);
+        text-align: center;
+        transform: translateX(-200%);
+        transition: transform 1.5s ease;
     }
 
-    #mobile-nav .nav-container div {
-        height: 2px;
-        width: 100%;
-        background-color: white;
+    #mobile-nav .nav-container.show {
+        transform: translateX(0);
     }
 
-
-    #hero #mobile-nav .menu-container {
-        display: block;
-        top: -100px;
-        left: -100px;
-        position: absolute;
-        height: 100px;
-        width: 100px;
-        background-color: var(--color-one);
-        border-bottom-right-radius: 50%;
-        border-top-right-radius: 50%;
-        transform: rotate(45deg);
-        transform: translate(-50%, -50%);
-        animation-name: grow;
-        animation-duration: 1.5s;
-        animation-fill-mode: forwards;
-        animation-play-state: paused;
+    #mobile-nav .nav-container ul li {
+        padding: 10px 0;
     }
 
-    .menu-container h1 {
-        background-color: green;
-        position: absolute;
-        top: 50%;
-        z-index: 1000;
-        left: 50%;
+    #mobile-nav .nav-container ul li a {
+        color: white;
     }
-
-    @keyframes grow {
-        0% {
-            height: 100px;
-            width: 100px;
-        }
-        100% {
-            height: 1000px;
-            width: 1000px;
-        }
-    } */
 }
 
 /* figure out why there is overflow on mobile */
