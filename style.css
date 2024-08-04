@@ -7,6 +7,10 @@
     --paragraph-font: "Lato", sans-serif;
 }
 
+body {
+    overflow-x: hidden;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -21,13 +25,18 @@ a {
     text-decoration: none;
 }
 
+p {
+    font-family: var(--paragraph-font);
+    line-height: 25px;
+}
+
 #hero #mobile-nav {
     display: none;
     
 }
 
 #hero {
-    height: 100vh;
+    height: auto;
     width: 100vw;
     background-color: black;
     /* position: relative; */
@@ -52,8 +61,8 @@ a {
 }
 
 #hero #desktop-nav ul li {
-    font-size: 2rem;
-    padding: 0 50px;
+    font-size: 1.5rem;
+    padding: 0 20px;
     font-family: var(--main-font);
 }
 
@@ -69,7 +78,7 @@ a {
     content: '';
     bottom: -5px;
     left: 0;
-    height: 2px;
+    height: 4px;
     width: 0%;
     background-color: var(--color-two);
     transition: width 0.3s ease;
@@ -79,6 +88,82 @@ a {
 #hero #desktop-nav ul li a:hover::after {
     width: 100%;
 }
+
+#hero .main-content {
+    padding: 50px 300px 0 300px;
+    background-color: black;
+    display: flex;
+    justify-content: space-between;
+    height: auto;
+}
+
+#hero .main-content .intro {
+    color: white;
+    font-family: var(--main-font);
+    text-align: left;
+    flex-grow: 1;
+    padding: 50px 100px;
+}
+
+
+#hero .main-content .img-container img {
+    object-fit: cover;
+    vertical-align: bottom;
+    width: 500px;
+}
+
+#hero .main-content .intro h1 {
+    font-size: 5rem;
+}
+
+#hero .main-content .intro h2 {
+    padding: 10px 0;
+    font-size: 3rem;
+}
+
+#hero .main-content .intro h3 {
+    color: var(--color-two);
+    font-size: 1.5rem;
+    padding: 10px 0;
+}
+
+/* Player Styling */
+
+.player {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 50%;
+    padding: 20px 0;
+}
+
+.player button {
+    padding: 20px;
+    border-radius: 50%;
+    border: 1px solid var(--color-two);
+    background: transparent;
+    cursor: pointer;
+}
+
+.player button i {
+    font-size: 1.5rem;
+    color: var(--color-two)
+}
+
+.progress-container {
+    width: 50%;
+    height: 10px;
+    background-color: none;
+    border: 1px solid var(--color-two);
+}
+
+.progress-bar {
+    width: 50%;
+    background-color: var(--color-two);
+    height: 100%;
+}
+
+/* //TO DO: Add functionality for player and adjusts css media queries for Mobile responsiveness in hero */
 
 /* ======================= Media Queries Start =============== */
 
@@ -125,7 +210,7 @@ a {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        transform: translate(120%, 230%);
+        transform: translate(150%, 200%);
         /* transform: translate(350%, 450%); */
     }
 
@@ -137,7 +222,7 @@ a {
 
     #mobile-nav .nav-container {
         position: absolute;
-        top: 668px;
+        top: 638px;
         left: 592px;
         font-size: 2rem;
         font-family: var(--main-font);
@@ -156,6 +241,26 @@ a {
 
     #mobile-nav .nav-container ul li a {
         color: white;
+    }
+
+    #hero .main-content {
+        padding: 0;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #hero .main-content .intro {
+        padding: 20px 50px;
+        text-align: center;
+    }
+
+    .player, .progress-container {
+        width: 70%;
+        margin: 0 auto;
+    }
+
+    #hero .main-content .img-container img {
+        width: 200px;
     }
 }
 

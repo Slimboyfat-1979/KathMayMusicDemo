@@ -59,8 +59,6 @@ hamburger.addEventListener('click', function(){
             console.log('Show menu now!')
         }, 150)
     });
-
-
 })
 
 
