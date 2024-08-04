@@ -177,7 +177,8 @@ p {
     }
 
     #hero #mobile-nav {
-        position: relative;
+        box-shadow: 10px 10px 20px black;
+        position: absolute;
         background-color: var(--color-one);
         height: 200px;
         width: 200px;
@@ -190,6 +191,7 @@ p {
         animation-duration: 1.5s;
         animation-fill-mode: forwards;
         animation-play-state: paused;
+        opacity: 1;
     }
 
     @keyframes growMenu {
@@ -237,6 +239,7 @@ p {
 
     #mobile-nav .nav-container ul li {
         padding: 10px 0;
+        text-shadow: 4px 4px 4px black;
     }
 
     #mobile-nav .nav-container ul li a {
