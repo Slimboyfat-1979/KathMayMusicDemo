@@ -138,16 +138,21 @@ p {
 }
 
 .player button {
-    height: 80px;
-    width: 80px;
+    height: 10%;
+    width: 30%;
     border-radius: 50%;
     border: 1px solid var(--color-two);
     background: transparent;
     cursor: pointer;
+    aspect-ratio: 1/1;
+}
+
+.player button:active {
+    transform: scale(0.98);
 }
 
 .player button i {
-    font-size: 1.5rem;
+    font-size: 2rem;
     color: var(--color-two)
 }
 
@@ -163,6 +168,103 @@ p {
     background-color: var(--color-two);
     height: 100%;
 }
+
+.song-titles {
+    max-width: 50%;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.song-titles::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    height: 100%;
+    background: linear-gradient(to right, black, transparent);
+    width: 10%;
+    z-index: 2;
+}
+
+.song-titles::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    background: linear-gradient(to left, black, transparent);
+    width: 10%;
+    z-index: 2;
+}
+
+.song-titles h3 {
+    transform: translateX(-100%);
+    transition: transform 1s linear;
+    color: white !important;
+    font-family: var(--paragraph-font);
+    font-size: 1.25rem !important;
+    letter-spacing: 2px;
+}
+
+.song-titles h3.show {
+    transform: translateX(0);
+}
+
+.song-titles h3.leave {
+    transform: translateX(100%);
+}
+
+.about-content {
+    border: 2px solid white;
+    height: 40vh;
+    padding: 20px 20px;
+    width: 70%;
+    margin: 0 auto;
+}
+
+/* .song-titles {
+    overflow-x: hidden;
+    background-color: blue;
+    width: 50%;
+}
+
+.song-title-container {
+    height: 100%;
+    width: 50%;
+    background-color: red;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.song-title-container::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    background-color: green;
+    width: 10%;
+    background: linear-gradient(to left, black, transparent);
+}
+
+.song-title-container::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    height: 100%;
+    background-color: green;
+    width: 10%;
+    background: linear-gradient(to right, black, transparent);
+}
+
+.song-title-container h3 {
+    z-index: -1;
+    position: relative;
+    transform: translateX(50px);
+} */
+
 
 /* //TO DO: Add functionality for player and adjusts css media queries for Mobile responsiveness in hero */
 

@@ -13,6 +13,8 @@ const songs = [
   "village",
 ];
 
+const songTitle = document.querySelector('.song-titles h3');
+
 /* Code for player */
 
 let SONG_URL = "./assets/music/";
@@ -26,6 +28,7 @@ audio.setAttribute("src", songUrl);
 playBtn.addEventListener('click', () => {
   playingState = !playingState;
   changePlayIcon();
+  showSongInDom(songs[songIndex]);
   if (playingState) {
     audio.play();
   } else {
@@ -33,6 +36,22 @@ playBtn.addEventListener('click', () => {
   }
 })
 
+forwardBtn.addEventListener('click', () => {
+    songTitle.classList.remove('show');
+    songTitle.classList.add('leave');
+    this.addEventListener('transitionend', () => {
+        songIndex++;
+        console.log(songs[songIndex]);
+        showSongInDom(songs[songIndex]);
+    })
+})
+
+function showSongInDom(song) {;
+    songTitle.textContent = song;
+    songTitle.classList.add('show');
+
+    // songTitle.classList.add('show');
+}
 
 //Change the playicon once the play button is pressed.
 function changePlayIcon() {
@@ -46,7 +65,6 @@ function changePlayIcon() {
 }
 
 /* Code for player end */
-
 //Menu Nav Click
 
 const hamburger = document.querySelector(".hamburger");
@@ -77,13 +95,3 @@ hamburger.addEventListener("click", function () {
 });
 
 
-// forwardBtn.addEventListener("click", function () {
-//   songIndex = (songIndex + 1) % songs.length;
-//   console.log(songs[songIndex]);
-//   playSong(songs[songIndex]);
-//   songIndex = songIndex + 1;
-//   console.log(songIndex);
-//   if (songIndex >= songs.length - 1) {
-//     songIndex = 0;
-//   }
-// });
