@@ -13,6 +13,7 @@ const songs = [
   "village",
 ];
 
+const progressContainer = document.querySelector('.progress-container'); 
 const songTitle = document.querySelector('.song-titles h3');
 
 /* Code for player */
@@ -20,48 +21,60 @@ const songTitle = document.querySelector('.song-titles h3');
 let SONG_URL = "./assets/music/";
 let songIndex = 0;
 let playingState = false;
-
-// Initialize the audio src attribute
 let songUrl = `${SONG_URL}${songs[songIndex]}.mp3`;
-audio.setAttribute("src", songUrl);
 
 playBtn.addEventListener('click', () => {
-  playingState = !playingState;
-  changePlayIcon();
-  showSongInDom(songs[songIndex]);
-  if (playingState) {
-    audio.play();
-  } else {
-    audio.pause();
-  }
-})
+    let songPlayingUrl = SONG_URL + songs[songIndex] + '.mp3';
+    playingState = !playingState;
+    if(audio.getAttribute('src') === '') {
+        audio.setAttribute('src', songPlayingUrl);
+    }
 
-forwardBtn.addEventListener('click', () => {
-    songTitle.classList.remove('show');
-    songTitle.classList.add('leave');
-    this.addEventListener('transitionend', () => {
-        songIndex++;
-        console.log(songs[songIndex]);
-        showSongInDom(songs[songIndex]);
+    playingState ? playBtn.className = 'fa solid fa-pause' : playBtn.className = 'fa solid fa-play';
+    !playingState ? audio.pause() : audio.play()
+
+    audio.addEventListener('timeupdate', (e) => {
+        const {duration, currentTime} = e.target;
+        const progressPercent = (currentTime / duration) * 100;
+        document.querySelector('.progress-bar').style.width = `${progressPercent}%`;
     })
 })
 
-function showSongInDom(song) {;
+forwardBtn.addEventListener('click', () => {
+    songIndex++;
+    if(songIndex === songs.length) {
+       songIndex = 0;
+    }
+
+    if(playingState) {
+        audio.setAttribute('src', SONG_URL + songs[songIndex] + '.mp3');
+        audio.play();
+    }
+})
+
+backwardBtn.addEventListener('click', () => {
+    songIndex--;
+    if(songIndex < 0) {
+        songIndex = songs.length - 1;
+    }
+
+    if(playingState) {
+        audio.setAttribute('src', SONG_URL + songs[songIndex] + '.mp3');
+        audio.play();
+    }
+})
+
+progressContainer.addEventListener('click', function(e) {
+    const width = this.clientWidth;
+    const clickX = e.offsetX;
+    const duration = audio.duration;
+    audio.currentTime = (clickX / width) * duration;
+})
+
+//Finish This
+function loadSongTitle(song) {
     songTitle.textContent = song;
     songTitle.classList.add('show');
-
-    // songTitle.classList.add('show');
-}
-
-//Change the playicon once the play button is pressed.
-function changePlayIcon() {
-  if (playBtn.classList.contains("fa-play")) {
-    playBtn.classList.remove("fa-play");
-    playBtn.classList.add("fa-pause");
-  } else {
-    playBtn.classList.remove("fa-pause");
-    playBtn.classList.add("fa-play");
-  }
 }
 
 /* Code for player end */
