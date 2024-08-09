@@ -23,15 +23,20 @@ let songIndex = 0;
 let playingState = false;
 let songUrl = `${SONG_URL}${songs[songIndex]}.mp3`;
 
+
+
 playBtn.addEventListener('click', () => {
     let songPlayingUrl = SONG_URL + songs[songIndex] + '.mp3';
     playingState = !playingState;
+
+    showSong();
+
     if(audio.getAttribute('src') === '') {
         audio.setAttribute('src', songPlayingUrl);
     }
 
     playingState ? playBtn.className = 'fa solid fa-pause' : playBtn.className = 'fa solid fa-play';
-    !playingState ? audio.pause() : audio.play()
+    !playingState ? audio.pause() : audio.play();
 
     audio.addEventListener('timeupdate', (e) => {
         const {duration, currentTime} = e.target;
@@ -48,7 +53,8 @@ forwardBtn.addEventListener('click', () => {
 
     if(playingState) {
         audio.setAttribute('src', SONG_URL + songs[songIndex] + '.mp3');
-        audio.play();
+        audio.play(); 
+        showSong();
     }
 })
 
@@ -61,8 +67,13 @@ backwardBtn.addEventListener('click', () => {
     if(playingState) {
         audio.setAttribute('src', SONG_URL + songs[songIndex] + '.mp3');
         audio.play();
+        showSong();   
     }
 })
+
+function showSong() {
+    songTitle.textContent = songs[songIndex];
+}
 
 progressContainer.addEventListener('click', function(e) {
     const width = this.clientWidth;
@@ -71,11 +82,12 @@ progressContainer.addEventListener('click', function(e) {
     audio.currentTime = (clickX / width) * duration;
 })
 
-//Finish This
-function loadSongTitle(song) {
-    songTitle.textContent = song;
-    songTitle.classList.add('show');
-}
+const parallaxChild = document.querySelector('.parallax-child');
+
+window.addEventListener('scroll', () => {
+  const scrollPosition = window.scrollY;
+  parallaxChild.style.transform = `translateZ(-1px) scale(2) translateY(${scrollPosition * 0.5}px)`;
+});
 
 /* Code for player end */
 //Menu Nav Click
